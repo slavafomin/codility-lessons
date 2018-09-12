@@ -4,7 +4,7 @@
  */
 module.exports = function solution(array) {
 
-  // Cloning the array
+  // Map to mark paired elements
   const paired = [];
 
   let pairFound;
@@ -12,7 +12,7 @@ module.exports = function solution(array) {
   for (let i = 0, imax = array.length - 1; i <= imax; i++) {
 
     // Skipping already paired element
-    if (true === paired[i]) {
+    if (isPaired(i)) {
       continue;
     }
 
@@ -22,12 +22,12 @@ module.exports = function solution(array) {
     for (let j = i + 1; j <= imax; j++) {
 
       // Skipping already paired element
-      if (true === paired[j]) {
+      if (isPaired(j)) {
         continue;
       }
 
       if (array[i] === array[j]) {
-        paired[j] = true; // marking element as paired
+        markAsPaired(j);
         pairFound = true;
         break;
       }
@@ -39,6 +39,15 @@ module.exports = function solution(array) {
       return array[i];
     }
 
+  }
+
+
+  function isPaired(i) {
+    return (true === paired[i]);
+  }
+
+  function markAsPaired(i) {
+    paired[i] = true;
   }
 
 };

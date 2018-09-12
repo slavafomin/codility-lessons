@@ -5,8 +5,10 @@
  */
 module.exports = function solution(array) {
 
+  // In real application we would probably want to clone the array first
   array.sort();
 
+  // Iterating two consecutive elements at a time
   for (let i = 0, j = 1, imax = array.length - 1; i <= imax; i += 2, j += 2) {
 
     // Last element left unpaired
